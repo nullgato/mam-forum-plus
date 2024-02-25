@@ -13,7 +13,7 @@ The first step is installing a browser extension that allows userscripts. Usersc
 
 After you do that you can click the image underneath this line of text to install straight from GitHub!
 
-[current-release]: /releases/latest/download/mam-forum-redesign.user.js
+[current-release]: https://github.com/nullgato/mam-forum-plus/releases/latest/download/mam-forum-redesign.user.js
 [![Install - Via Github](https://img.shields.io/badge/Install-Via_Github-2ea44f?style=for-the-badge&logo=tampermonkey)][current-release]
 
 <small>* MAM Forum+ officially supports Chrome, Edge, and Firefox, but has also been tested with Arc (1.30.0) and Opera GX (105). Other browsers may work if they have a userscript extension.</small>
