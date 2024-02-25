@@ -1,0 +1,49 @@
+{
+  "name": "mam-forum-plus",
+  "version": "0.0.1",
+  "description": "Overhauls the forum design and modifies the feature placement",
+  "author": "nullgato",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "rollup -wc",
+    "clean": "del-cli dist",
+    "lint": "eslint --ext .ts,.tsx . && prettier --ignore-path .eslintignore --check .",
+    "lint:fix": "eslint --ext .ts,.tsx --fix . && prettier --ignore-path .eslintignore --write .",
+    "ci": "run-s lint",
+    "build:js": "rollup -c",
+    "build": "cross-env NODE_ENV=production run-s ci clean build:js"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.23.7",
+    "@violentmonkey/dom": "^2.1.5",
+    "@violentmonkey/ui": "^0.7.8",
+    "solid-js": "^1.8.7"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.23.4",
+    "@gera2ld/plaid": "~2.7.0",
+    "@gera2ld/plaid-rollup": "~2.7.0",
+    "@unocss/postcss": "^0.58.3",
+    "@violentmonkey/types": "^0.1.7",
+    "babel-preset-solid": "^1.8.6",
+    "cross-env": "^7.0.3",
+    "del-cli": "^5.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "rollup-plugin-userscript": "^0.3.0",
+    "unocss": "^0.58.3"
+  },
+  "lint-staged": {
+    "src/**": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+/* Preflights are needed for default values of variables */
+@unocss preflights;
+
+.forumContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forumTools {
+    font-size: 13px;
+}
