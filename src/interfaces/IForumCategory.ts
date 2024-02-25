@@ -1,4 +1,4 @@
-import { IForumBoard } from "./IForumBoard"
+import { IForumBoard } from './IForumBoard'
 
 interface IForumCategory {
     name: string

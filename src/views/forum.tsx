@@ -36,20 +36,27 @@ const cloneForum = (): IForumCategory[] => {
         if (isCategory) {
             forumItems.push({
                 name: row.cells[0].textContent,
-                boards: []
+                boards: [],
             })
 
             continue
         }
 
         forumItems[forumItems.length - 1].boards.push({
-            isRead: row.cells[BoardCells.Icon].children[0].getAttribute('alt') === 'unlocked',
-            name: row.cells[BoardCells.Info].querySelector('.forumLink').textContent,
-            description: row.cells[BoardCells.Info].querySelector('.forDesc').textContent,
-            subforums: parseSubforums(row.cells[BoardCells.Info].querySelector('.subBoard')),
+            isRead:
+                row.cells[BoardCells.Icon].children[0].getAttribute('alt') ===
+                'unlocked',
+            name: row.cells[BoardCells.Info].querySelector('.forumLink')
+                .textContent,
+            description:
+                row.cells[BoardCells.Info].querySelector('.forDesc')
+                    .textContent,
+            subforums: parseSubforums(
+                row.cells[BoardCells.Info].querySelector('.subBoard'),
+            ),
             topicCount: parseInt(row.cells[BoardCells.TopicCount].textContent),
             postCount: parseInt(row.cells[BoardCells.PostCount].textContent),
-            latestPost: parseLatestPost(row.cells[BoardCells.LatestPost])
+            latestPost: parseLatestPost(row.cells[BoardCells.LatestPost]),
         })
     }
 

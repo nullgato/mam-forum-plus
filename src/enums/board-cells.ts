@@ -3,7 +3,7 @@ const enum BoardCells {
     Info,
     TopicCount,
     PostCount,
-    LatestPost
+    LatestPost,
 }
 
-export { BoardCells };
+export { BoardCells }

@@ -1,7 +1,7 @@
 const enum ForumViews {
     FORUM,
     BOARD,
-    THREAD
+    THREAD,
 }
 
-export { ForumViews };
+export { ForumViews }

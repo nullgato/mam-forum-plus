@@ -1,5 +1,5 @@
-import { IForumSubforum } from "./IForumSubforum"
-import { ILatestPost } from "./ILatestPost"
+import { IForumSubforum } from './IForumSubforum'
+import { ILatestPost } from './ILatestPost'
 
 interface IForumBoard {
     isRead: boolean

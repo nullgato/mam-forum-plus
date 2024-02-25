@@ -1,7 +1,7 @@
 module.exports = {
-  plugins: {
-    'postcss-calc': {},
-    'postcss-nested': {},
-    '@unocss/postcss': {},
-  },
-};
+    plugins: {
+        'postcss-calc': {},
+        'postcss-nested': {},
+        '@unocss/postcss': {},
+    },
+}

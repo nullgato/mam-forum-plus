@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        mam-forum-redesign
+// @name        mam-forum-plus
 // @namespace   https://github.com/nullgato
 // @description This is a userscript.
 // @match       https://www.myanonamouse.net/f*
@@ -15,10 +15,10 @@
 'use strict';
 
 /**
- * @remarks 
+ * @remarks
  * Sourced from afTimer by GardenShade
  * @see {@link https://github.com/gardenshade/mam-plus/blob/master/src/util.ts#L11}
- * 
+ *
  * @returns A resolution upon receiving the next frame
  */
 const waitOneFrame = () => {
@@ -28,10 +28,10 @@ const waitOneFrame = () => {
 };
 
 /**
- * @remarks 
+ * @remarks
  * Based on waitForElem by GardenShade
  * @see {@link https://github.com/gardenshade/mam-plus/blob/master/src/check.ts#L14}
- * 
+ *
  * @param selector The css selector to query and wait for if not yet loaded
  * @returns The element upon query/load or null if wait is unsuccessful
  */
@@ -558,7 +558,7 @@ var ForumViews = /*#__PURE__*/function (ForumViews) {
 const parseSubforums = elem => {
   if (elem === null) return [];
   const subforums = [];
-  for (let subElem of elem.children) {
+  for (const subElem of elem.children) {
     if (!(subElem instanceof HTMLAnchorElement)) continue;
     subforums.push({
       href: subElem.getAttribute('href'),
@@ -647,7 +647,7 @@ function Forum(props) {
 const cloneForum = () => {
   const forumItems = [];
   const tableElem = document.querySelector('#mainForum');
-  for (let row of tableElem.tBodies[0].rows) {
+  for (const row of tableElem.tBodies[0].rows) {
     const isCategory = row.cells[0].className === 'colhead';
     if (isCategory) {
       forumItems.push({
@@ -669,6 +669,8 @@ const cloneForum = () => {
   return forumItems;
 };
 
+//const forumPath = '/f'
+//const forumPathAlt = '/f/'
 const boardPath = '/f/b';
 const threadPath = '/f/t';
 const getView = () => {
@@ -681,16 +683,18 @@ const processRouting = async () => {
   const mountingElem = await waitForElem('#mainBody');
   switch (view) {
     case ForumViews.FORUM:
-      if (mountingElem === null) {
-        console.warn('#mainBody did not properly load in time');
-        return;
+      {
+        if (mountingElem === null) {
+          console.warn('#mainBody did not properly load in time');
+          return;
+        }
+        const forumItems = cloneForum();
+        mountingElem.innerHTML = '';
+        render(() => createComponent(Forum, {
+          forumItems: forumItems
+        }), mountingElem);
+        break;
       }
-      const forumItems = cloneForum();
-      mountingElem.innerHTML = '';
-      render(() => createComponent(Forum, {
-        forumItems: forumItems
-      }), mountingElem);
-      break;
   }
 };
 

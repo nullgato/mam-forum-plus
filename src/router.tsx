@@ -1,10 +1,10 @@
-import { render } from "solid-js/web";
-import { ForumViews } from "./enums/forum-views";
-import { waitForElem } from "./util";
-import Forum, { cloneForum } from "./views/forum";
+import { render } from 'solid-js/web'
+import { ForumViews } from './enums/forum-views'
+import { waitForElem } from './util'
+import Forum, { cloneForum } from './views/forum'
 
-const forumPath = '/f'
-const forumPathAlt = '/f/'
+//const forumPath = '/f'
+//const forumPathAlt = '/f/'
 const boardPath = '/f/b'
 const threadPath = '/f/t'
 
@@ -20,7 +20,7 @@ const processRouting = async () => {
     const view = getView()
     const mountingElem = await waitForElem('#mainBody')
     switch (view) {
-        case ForumViews.FORUM:
+        case ForumViews.FORUM: {
             if (mountingElem === null) {
                 console.warn('#mainBody did not properly load in time')
                 return
@@ -30,10 +30,11 @@ const processRouting = async () => {
             mountingElem.innerHTML = ''
             render(() => <Forum forumItems={forumItems} />, mountingElem)
             break
-        default:
+        }
+        default: {
             break
+        }
     }
 }
 
-export { processRouting };
-
+export { processRouting }

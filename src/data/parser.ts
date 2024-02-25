@@ -1,5 +1,5 @@
-import { IForumSubforum } from "../interfaces/IForumSubforum";
-import { ILatestPost } from "../interfaces/ILatestPost";
+import { IForumSubforum } from '../interfaces/IForumSubforum'
+import { ILatestPost } from '../interfaces/ILatestPost'
 
 const parseSubforums = (elem: HTMLSpanElement): IForumSubforum[] => {
     if (elem === null) return []
@@ -11,7 +11,7 @@ const parseSubforums = (elem: HTMLSpanElement): IForumSubforum[] => {
         subforums.push({
             href: subElem.getAttribute('href'),
             isNew: subElem.children.length > 0,
-            name: subElem.textContent
+            name: subElem.textContent,
         })
     }
 
@@ -25,18 +25,19 @@ const parseLatestPost = (cell: HTMLTableCellElement): ILatestPost => {
     const postElem = cell.querySelector(postAnchorSelector)
 
     const author = {
-        color: authorElem.children[0].getAttribute('style').replace('color:', ''),
+        color: authorElem.children[0]
+            .getAttribute('style')
+            .replace('color:', ''),
         href: authorElem.getAttribute('href'),
-        name: authorElem.textContent
+        name: authorElem.textContent,
     }
 
     return {
         author,
         date: cell.innerText.substring(0, cell.innerText.indexOf('\n')),
         href: postElem.getAttribute('href'),
-        title: postElem.textContent
+        title: postElem.textContent,
     }
 }
 
-export { parseLatestPost, parseSubforums };
-
+export { parseLatestPost, parseSubforums }
