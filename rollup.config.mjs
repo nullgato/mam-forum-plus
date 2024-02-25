@@ -5,7 +5,7 @@ import pkg from './package.json' assert { type: 'json' }
 
 export default defineConfig(
     Object.entries({
-        'mam-forum-redesign': 'src/index.ts',
+        'mam-forum-plus': 'src/index.ts',
         solid: 'src/lib/solid.ts',
     }).map(([name, entry]) => ({
         input: entry,
