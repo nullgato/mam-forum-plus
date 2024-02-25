@@ -4,4 +4,4 @@ node_modules
 /.nyc_output
 /coverage
 /types
-dist/solid.user.js
+dist

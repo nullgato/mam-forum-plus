@@ -20,7 +20,7 @@ export default defineConfig(
                 extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx'],
             }),
             userscript((meta) =>
-                meta.replace('process.env.AUTHOR', pkg.author),
+                meta.replace('process.env.AUTHOR', pkg.author)
             ),
         ],
         external: defineExternal(['@violentmonkey/ui', '@violentmonkey/dom']),
@@ -36,5 +36,5 @@ export default defineConfig(
             },
             indent: false,
         },
-    })),
+    }))
 )

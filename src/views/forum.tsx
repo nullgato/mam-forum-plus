@@ -52,7 +52,7 @@ const cloneForum = (): IForumCategory[] => {
                 row.cells[BoardCells.Info].querySelector('.forDesc')
                     .textContent,
             subforums: parseSubforums(
-                row.cells[BoardCells.Info].querySelector('.subBoard'),
+                row.cells[BoardCells.Info].querySelector('.subBoard')
             ),
             topicCount: parseInt(row.cells[BoardCells.TopicCount].textContent),
             postCount: parseInt(row.cells[BoardCells.PostCount].textContent),
