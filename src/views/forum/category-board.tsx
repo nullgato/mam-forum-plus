@@ -25,6 +25,30 @@ const CategoryBoard = (props: IProps) => {
                     {props.board.name}
                 </a>
                 <p>{props.board.description}</p>
+                <div class={styles.forumBoardSubforums}>
+                    <p>Subforums:</p>
+                    {props.board.subforums.map((subforum) => {
+                        return (
+                            <a
+                                href={subforum.href}
+                                style={
+                                    props.theme === 'mp_light'
+                                        ? {
+                                              'background-color': '#333',
+                                              color: '#eee',
+                                          }
+                                        : {
+                                              'background-color': '#aaa',
+                                              color: '#111',
+                                          }
+                                }
+                            >
+                                {subforum.isNew && <img src="/pic/new.png" />}
+                                {subforum.name}
+                            </a>
+                        )
+                    })}
+                </div>
             </div>
 
             <p>{props.board.topicCount}</p>
