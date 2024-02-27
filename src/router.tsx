@@ -3,8 +3,8 @@ import { ForumViews } from './enums/forum-views'
 import { waitForElem } from './util'
 import Forum, { cloneForum } from './views/forum'
 
-//const forumPath = '/f'
-//const forumPathAlt = '/f/'
+const forumPath = '/f'
+const forumPathAlt = '/f/'
 const boardPath = '/f/b'
 const threadPath = '/f/t'
 
@@ -13,7 +13,12 @@ const getView = (): ForumViews => {
 
     if (path.indexOf(threadPath) >= 0) return ForumViews.THREAD
     if (path.indexOf(boardPath) >= 0) return ForumViews.BOARD
-    else return ForumViews.FORUM
+    if (
+        (path.indexOf(forumPath) >= 0 || path.indexOf(forumPathAlt) >= 0) &&
+        path.indexOf('search.php') === -1
+    )
+        return ForumViews.FORUM
+    else return ForumViews.UNKNOWN
 }
 
 const processRouting = async () => {
@@ -32,9 +37,11 @@ const processRouting = async () => {
             break
         }
         default: {
-            break
+            return
         }
     }
+
+    console.log('MAM Forum+ is loaded for this page!')
 }
 
 export { processRouting }
