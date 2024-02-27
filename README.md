@@ -3,7 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/nullgato/mam-forum-plus?include_prereleases=&sort=semver&color=blue)](https://github.com/nullgato/mam-forum-plus/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 
-This does not add any _additional_ functionality that would not already exist, it merely modifies the design of the forum and rearranges some of the pre-existing features. Such an example is the search bar on the main forum view- you could already search but this particular enhancement just adds a way to do it quicker.
+This project is meant to primarily be a design overhaul first, and provide additional functionality second. Some current features include: forum page searching, hiding/showing entire forum categories.
 
 MAM Forum+ does not require [MAM+](https://github.com/gardenshade/mam-plus) to work, but I do personally recommend MAM+ to enhance the site experience. This project is heavily inspired by MAM+ and draws from a couple blocks worth of code within that project. A big big thanks to [GardenShade](https://github.com/gardenshade) for open sourcing and their work that I learned from.
 
