@@ -1,20 +1,38 @@
+import { createSignal } from 'solid-js'
 import { parseLatestPost, parseSubforums } from '../data/parser'
 import { BoardCells } from '../enums/board-cells'
 import { ForumLinks } from '../enums/forum-links'
 import { IForumCategory } from '../interfaces/IForumCategory'
-import styles from '../styles/forum.module.css'
+import styles, { stylesheet } from '../styles/forum.module.css'
+import CategoryBoard from './forum/category-board'
+import CategoryHeader from './forum/category-header'
+
+GM_addStyle(stylesheet)
 
 interface IProps {
     forumItems: IForumCategory[]
 }
 
 function Forum(props: IProps) {
-    console.log(props.forumItems)
+    const [searchText, setSearchText] = createSignal('')
+    const [isSearching, setIsSearching] = createSignal(false)
+
+    const postSearch = () => {
+        if (isSearching()) return
+        setIsSearching(true)
+
+        const encodedSearchText = encodeURIComponent(searchText())
+        window.location.href = `https://www.myanonamouse.net/f/search.php?text=${encodedSearchText}&searchIn=1&order=default&start=0`
+    }
+
+    const theme = document.getElementById('siteMain').getAttribute('class') as
+        | 'mp_light'
+        | 'mp_dark'
 
     return (
-        <div style={styles.forumContent}>
+        <div class={styles.forumContent}>
             <h1>My Anonamouse - Forum</h1>
-            <div style={styles.forumTools}>
+            <div class={styles.forumTools}>
                 <a href={ForumLinks.AdvancedSearch}>Advanced Search</a>
                 <span> | </span>
                 <a href={ForumLinks.UnreadPosts}>New Posts</a>
@@ -23,6 +41,33 @@ function Forum(props: IProps) {
                 <span> | </span>
                 <a href={ForumLinks.Catchup}>Mark all as read</a>
             </div>
+            <div class={styles.forumSearch}>
+                <div class={styles.svgIcon}>
+                    <input
+                        type="text"
+                        placeholder="Search Forums..."
+                        value={searchText()}
+                        onKeyPress={(event) => {
+                            if (event.key !== 'Enter') return
+
+                            postSearch()
+                        }}
+                        onInput={(event) => {
+                            setSearchText(event.target.value)
+                        }}
+                    />
+                    <i class={styles.searchIcon}></i>
+                </div>
+            </div>
+            {props.forumItems.map((forumCategory) => {
+                return (
+                    <CategoryHeader theme={theme} category={forumCategory}>
+                        {forumCategory.boards.map((board) => {
+                            return <CategoryBoard theme={theme} board={board} />
+                        })}
+                    </CategoryHeader>
+                )
+            })}
         </div>
     )
 }
@@ -46,6 +91,9 @@ const cloneForum = (): IForumCategory[] => {
             isRead:
                 row.cells[BoardCells.Icon].children[0].getAttribute('alt') ===
                 'unlocked',
+            href: row.cells[BoardCells.Info]
+                .querySelector('.forumLink')
+                .getAttribute('href'),
             name: row.cells[BoardCells.Info].querySelector('.forumLink')
                 .textContent,
             description:

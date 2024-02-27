@@ -5,6 +5,8 @@
 // @match       https://www.myanonamouse.net/f*
 // @run-at      document-start
 // @grant       GM_addStyle
+// @grant       GM_getValue
+// @grant       GM_setValue
 // @version     process.env.VERSION
 // @author      process.env.AUTHOR
 // @require     https://cdn.jsdelivr.net/combine/npm/@violentmonkey/dom@2,npm/@violentmonkey/ui@0.7

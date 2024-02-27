@@ -5,8 +5,152 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.forumSearch {
+    padding: 30px 0 0;
+    width: 350px;
+}
+
+.svgIcon {
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 12px;
+    top: 5px;
+    padding: 6px;
+    transition: 0.3s;
+    background: url('data:image/svg+xml,<svg fill="%23999" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 490.4 490.4" xml:space="preserve" stroke="%23999"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><g><path d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796 s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z"></path></g></g></svg>')
+        center bottom/cover no-repeat;
+}
+
+.forumSearch input[type='text'] {
+    width: 100%;
+    padding-left: 40px;
+    font-size: 13px;
+    border: 2px solid #999;
+    border-radius: 6px;
+    height: 34px;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.forumSearch input:focus {
+    border-color: #d9d9d9;
+}
+
+.forumSearch input::placeholder {
+    color: #777;
+}
+.forumSearch input:focus::placeholder {
+    color: #383838;
+}
+
+.forumSearch input[type='text']:focus + .search-icon {
+    background: url('data:image/svg+xml,<svg fill="%23999" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 490.4 490.4" xml:space="preserve" stroke="%23999"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><g><path d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796 s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z"></path></g></g></svg>')
+        center bottom/cover no-repeat;
 }
 
 .forumTools {
     font-size: 13px;
+}
+
+.forumCategory {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.forumCategoryHeader {
+    display: grid;
+    grid-template-columns: 50px 2fr 75px 75px 1fr;
+    column-gap: 10px;
+    align-items: center;
+    padding: 0px 20px;
+    border-radius: 5px;
+}
+
+.forumCategoryHeader button {
+    width: 20px;
+    height: 20px;
+    background: none;
+    font-weight: bold;
+    border-radius: 25%;
+    margin-left: 5px;
+}
+
+.forumCategoryHeader h1 {
+    font-size: 16px;
+}
+
+.forumCategoryHeader h1:nth-child(2) {
+    justify-self: flex-start;
+}
+
+.forumCategory div:nth-child(2) {
+    max-height: 700px;
+    overflow: hidden;
+    transition: max-height 0.25s ease-in;
+}
+
+.forumCategory div:nth-child(2).collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out;
+}
+
+@keyframes slide {
+    0% {
+        max-height: 100%;
+    }
+    100% {
+        max-height: 0%;
+    }
+}
+
+.forumCategoryBoard {
+    display: grid;
+    grid-template-columns: 50px 2fr 75px 75px 1fr;
+    column-gap: 10px;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.forumBoardDescription {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.forumBoardDescription a {
+    font-size: 14px;
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.forumBoardDescription p {
+    font-size: 11px;
+    font-style: italic;
+}
+
+.forumBoardLatestPost {
+    display: flex;
+    flex-direction: column;
+}
+
+.forumBoardLatestPost p {
+    font-size: 11px !important;
+    padding: 2px 0;
+}
+
+.forumBoardLatestPost a {
+    font-weight: bold;
 }
