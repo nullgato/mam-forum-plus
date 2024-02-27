@@ -9,7 +9,9 @@ import styles from '../../styles/forum.module.css'
 interface IProps {
     theme: 'mp_light' | 'mp_dark'
     category: IForumCategory
-    children: Node
+
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    children: any
 }
 
 const CategoryHeader = (props: IProps) => {
