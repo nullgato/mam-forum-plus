@@ -36,11 +36,11 @@ const CategoryBoard = (props: IProps) => {
                                         props.theme === 'mp_light'
                                             ? {
                                                   'background-color': '#333',
-                                                  color: '#eee',
+                                                  color: '#ddd',
                                               }
                                             : {
                                                   'background-color': '#aaa',
-                                                  color: '#111',
+                                                  color: '#222',
                                               }
                                     }
                                 >
